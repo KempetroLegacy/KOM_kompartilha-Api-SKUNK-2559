@@ -72,7 +72,7 @@ export class ProjetoService {
 
     const [author, banner, contentObject] = await Promise.all([
       this.projectRepositoryHelper.findUserById(userId),
-      file ? this.uploadService.handleFileUpload(file) : Promise.resolve(""),
+      file ? this.uploadService.handleFileUpload(file) : Promise.resolve(projetoData.banner || ""),
       Promise.resolve(ProjectValidatorHelper.parseContent(projetoData.content)),
     ]);
 

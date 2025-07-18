@@ -67,7 +67,7 @@ export class ArtigoService {
 
     const [author, banner, contentObject] = await Promise.all([
       this.articleRepositoryHelper.findUserById(userId),
-      file ? this.uploadService.handleFileUpload(file) : Promise.resolve(""),
+      file ? this.uploadService.handleFileUpload(file) : Promise.resolve(artigoData.banner || ""),
       Promise.resolve(ArtigoValidatorHelper.parseContent(artigoData.content)),
     ]);
 
